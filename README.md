@@ -64,7 +64,7 @@ Output: `data/demo/images/*.jpg`, `data/demo/masks/*.png` (255 where the forger 
 
 ## Rebuild everything from scratch
 
-About 75 minutes on a 2-core CPU, nearly all of it training. CPU training is not bit-for-bit deterministic, so results land close to, not exactly on, the shipped weights.
+About 75 minutes on a 2-core CPU, nearly all of it training. CPU training is not bit-for-bit deterministic, so results land close to, not exactly on, the shipped weights. The `data/val` set (seed 2) regenerates byte-identically, but the shipped `calibration.json` was fit on a calibration set that `--seed 3` does not rebuild exactly, so a fresh `tamperdoc.calibrate` run gives somewhat different thresholds (see REPORT.md). Held-out numbers in the report use the shipped `weights/`.
 
 ```
 python -m tamperdoc.generate --out data/train --n 1800 --templates 0-5 --seed 1 --save_fields   # training
