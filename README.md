@@ -20,6 +20,7 @@ Classifies an invoice image as `authentic`, `inpaint_and_rewrite`, `crop_and_rep
 | `weights/` | Trained `tampernet.pt` and `calibration.json` |
 | `fonts/` | Open-licence fonts used by the renderer (licences included) |
 | `REPORT.md` | Approach, honest evaluation, failure cases, next steps |
+| `VALIDATION.md` | Step-by-step checks of every claim, with commands and recorded results |
 
 ## Setup
 
