@@ -2,7 +2,7 @@
 
     python demo_overlay.py --images data/demo/images --pred results_demo --gt data/demo --out demo_panels
 
-Writes one PNG per document plus contact_sheet.png (all panels stacked). Needs only numpy + Pillow.
+Writes one PNG per document plus contact_sheet.png (all panels stacked; first 12 images unless --limit says otherwise). Needs only numpy + Pillow.
 Red overlay = where the model thinks the edit is. The right panel is the true tampered region
 (black for authentic pages). Verdict and score come from the prediction JSON and are printed on top.
 """
@@ -32,6 +32,8 @@ def main():
     ap.add_argument("--pred", required=True)
     ap.add_argument("--gt", required=True)
     ap.add_argument("--out", default="demo_panels")
+    ap.add_argument("--limit", type=int, default=12,
+                    help="process only the first N images (0 = all); a large contact sheet is too tall to open")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     labels = {}
@@ -40,9 +42,8 @@ def main():
             i, lab = line.split(",")[:2]
             labels[i] = lab
     panels = []
-    for f in sorted(os.listdir(a.images)):
-        if not f.lower().endswith((".jpg", ".jpeg", ".png")):
-            continue
+    names = [f for f in sorted(os.listdir(a.images)) if f.lower().endswith((".jpg", ".jpeg", ".png"))]
+    for f in names[: a.limit or None]:
         stem = os.path.splitext(f)[0]
         img = np.array(Image.open(os.path.join(a.images, f)).convert("RGB"))
         heat = np.array(Image.open(os.path.join(a.pred, stem + "_heatmap.png")).convert("L"), np.float32) / 255

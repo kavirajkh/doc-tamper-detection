@@ -92,7 +92,7 @@ Renders [document | heat map | ground truth] panels for any labelled folder (nee
 python demo_overlay.py --images data/demo/images --pred results_demo --gt data/demo --out demo_panels
 ```
 
-Output: `demo_panels/<id>_panel.png` per image and `demo_panels/contact_sheet.png`.
+Output: `demo_panels/<id>_panel.png` per image and `demo_panels/contact_sheet.png`. Only the first 12 images are processed by default; pass `--limit N` to change it (`--limit 0` is all, but the contact sheet becomes too tall to open).
 
 ## Reproducing the reported numbers
 

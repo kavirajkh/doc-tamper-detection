@@ -170,7 +170,7 @@ python predict.py --input data/stress/images --output results_stress | tail -1
 python evaluate.py --pred results_stress --gt data/stress
 ```
 
-Recorded: AUC 0.459, false-positive rate 0.0, detection recall 0.0167, inconclusive rate 0.70, pixel-F1 0.0904. By capture condition, AUC is 0.339 for phone photos and 0.419 for print-and-scan, both below chance.
+Recorded: AUC 0.459, false-positive rate 0.0, detection recall 0.0167, inconclusive rate 0.70, pixel-F1 0.0904. Recorded timing in the clean-clone run: mean 0.55 s, max 0.80 s per image. By capture condition, AUC is 0.339 for phone photos and 0.419 for print-and-scan, both below chance.
 
 ## 12. Calibration (read the caveat)
 
@@ -197,7 +197,7 @@ python demo_overlay.py --images data/val/images --pred results_val --gt data/val
 open demo_panels/contact_sheet.png
 ```
 
-Each panel shows document, heat map overlay and ground truth. Compare with `figures/correct.png` and `figures/failures.png`. The report's failures are `doc_00013`, `doc_00017` and `doc_00126`.
+By default only the first 12 images are processed (`--limit 0` does all, but the resulting contact sheet is far too tall for an image viewer to open; individual panels are `demo_panels/<id>_panel.png`). Each panel shows document, heat map overlay and ground truth. Compare with `figures/correct.png` and `figures/failures.png`. The report's failures are `doc_00013`, `doc_00017` and `doc_00126`.
 
 ## 14. Repository hygiene
 
