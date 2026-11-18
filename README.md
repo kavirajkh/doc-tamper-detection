@@ -2,6 +2,10 @@
 
 Classifies an invoice image as `authentic`, `inpaint_and_rewrite`, `crop_and_replace` or `inconclusive`, and writes a heat map showing where it thinks the edit is. Everything (data, model, training) is built from scratch with open-source libraries. No pretrained weights, no external datasets.
 
+![Heat map examples: document, heat map overlay, ground truth](figures/correct.png)
+
+*Three inpainted edits from the held-out templates. Columns: document, heat map overlay (red), ground truth. The heat map lands on the edit, but the verdicts for all three are still `inconclusive`. The failure cases are in [REPORT.md](REPORT.md) and `figures/failures.png`.*
+
 ## Layout
 
 | Path | Purpose |
