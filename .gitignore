@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+data/
+results*
+demo_panels/
+weights_mini.pt
+calib_strict.json

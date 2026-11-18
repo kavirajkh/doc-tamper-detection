@@ -1,0 +1,17 @@
+{
+  "features": [
+    "model",
+    "ela"
+  ],
+  "coef": {
+    "model": 1.8774,
+    "ela": 0.6985
+  },
+  "bias": -1.0867,
+  "inconclusive_band": [
+    0.5706,
+    0.786
+  ],
+  "fitted_on": "data/calib",
+  "n": 300
+}
